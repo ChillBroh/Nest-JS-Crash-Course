@@ -6,4 +6,33 @@ providers/services -  execute business logic
 commands :
 npm run start - normal server start
 npm run start: dev - server start in watch module
-nest g module < module name> - create a module in the directory and also connect with main app module automatically 
+nest g module < module name> - create a module in the directory and also connect with main app module automatically
+
+Database:
+    Docker: 
+        compose.yml file: 
+        version: '3.8' # The Compose file format version
+
+            services: # Define the services (containers) for your application
+                dev-db: # Service name
+                    image: postgres:13 # Docker image to use for this service
+                        ports:
+                         - '8080:80' # Port mapping (host:container)
+            environment:
+                POSTGRES_USER: postgres
+                POSTGRES_PASSWORD: 123
+                POSTGRES_DB: nest
+                networks:
+                 - Ishara
+
+            networks: # Define networks for connecting containers
+                Ishara:
+
+            view containers: docker ps
+            create container : docker compose up dev-db -d
+            check container log : docker logs <container ID>
+
+    Prisma: 
+        install prisma : npm install prisma --save-dev
+        install prisma client: npm install @prisma/client
+        initialize : npx prisma init //this will make a prisma directory with prisma file and also .env file
