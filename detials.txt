@@ -11,21 +11,21 @@ nest g module < module name> - create a module in the directory and also connect
 Database:
     Docker: 
         compose.yml file: 
-        version: '3.8' # The Compose file format version
+        version: '3.8' 
 
-            services: # Define the services (containers) for your application
-                dev-db: # Service name
-                    image: postgres:13 # Docker image to use for this service
+            services: 
+                dev-db: 
+                    image: postgres:13 //docker image name
                         ports:
-                         - '8080:80' # Port mapping (host:container)
+                         - '5432:5432' //port mapping for container
             environment:
-                POSTGRES_USER: postgres
-                POSTGRES_PASSWORD: 123
-                POSTGRES_DB: nest
+                POSTGRES_USER: postgres //username
+                POSTGRES_PASSWORD: 123 //password
+                POSTGRES_DB: nest //db name
                 networks:
                  - Ishara
 
-            networks: # Define networks for connecting containers
+            networks: // Define networks for connecting containers
                 Ishara:
 
             view containers: docker ps
@@ -34,5 +34,8 @@ Database:
 
     Prisma: 
         install prisma : npm install prisma --save-dev
-        install prisma client: npm install @prisma/client
+        install prisma client: npm install @prisma/client //prisma Client can expose CRUD operations
         initialize : npx prisma init //this will make a prisma directory with prisma file and also .env file
+        generate SQL migration files and run them against the database : npx prisma migrate dev --name init
+        create type script types for schema : npx prisma generate (must run this after every changes made to schema)
+        prisma studio visual editor for the data in your database: npx prisma studio
