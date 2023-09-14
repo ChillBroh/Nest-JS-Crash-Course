@@ -39,3 +39,25 @@ Database:
         generate SQL migration files and run them against the database : npx prisma migrate dev --name init
         create type script types for schema : npx prisma generate (must run this after every changes made to schema)
         prisma studio visual editor for the data in your database: npx prisma studio
+
+
+    pipes:
+     we use pipes for validations
+            import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+            export class AuthDto {
+                @IsEmail()
+                @IsNotEmpty()
+                email: string;
+
+                 @IsString()
+                 @IsNotEmpty()
+                 password: string;
+            }
+
+      app.useGlobalPipes(new ValidationPipe()); //must add this in main.ts
+       app.useGlobalPipes(new ValidationPipe({whitelist: true})); //this will remove unnecessary details from the object
+
+
+       after validation pass the validated data to service. for authentication we must use hash for password
+
+
