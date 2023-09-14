@@ -1,0 +1,3 @@
+module - group necessary controllers and services together. 
+controllers - handle request and response. also we write logics here
+providers/services -  execute business logic
