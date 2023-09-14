@@ -4,7 +4,7 @@ services: # Define the services (containers) for your application
   dev-db: # Service name
     image: postgres:13 # Docker image to use for this service
     ports:
-      - '8080:80' # Port mapping (host:container)
+      - '5432:5432' # Port mapping (host:container)
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 123

@@ -36,3 +36,4 @@ Database:
         install prisma : npm install prisma --save-dev
         install prisma client: npm install @prisma/client
         initialize : npx prisma init //this will make a prisma directory with prisma file and also .env file
+        generate SQL migration files and run them against the database : npx prisma migrate dev --name init
