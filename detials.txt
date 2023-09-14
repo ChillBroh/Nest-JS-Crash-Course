@@ -1,0 +1,9 @@
+module - group necessary controllers and services together. 
+controllers - handle request and response. also we write logics here
+providers/services -  execute business logic
+
+
+commands :
+npm run start - normal server start
+npm run start: dev - server start in watch module
+nest g module < module name> - create a module in the directory and also connect with main app module automatically 
