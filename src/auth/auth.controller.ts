@@ -1,6 +1,6 @@
-import { Controller, Post, Req, Body } from '@nestjs/common';
+import { Controller, Post, Req, Body, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { Request } from 'express';
+import { Request, Response } from 'express';
 import { AuthDto } from './dto';
 
 @Controller('auth')
@@ -13,18 +13,18 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('signup')
-  signup(@Req() req: Request) {
+  signup(@Req() req: Request, @Res() res: Response) {
     console.log(req.body);
-    return this.authService.signUp(req.body.email);
+    return this.authService.signUp(res, req.body.email);
   }
 
   //using dto
   @Post('signup2')
-  signup2(@Body() dto: AuthDto) {
+  signup2(@Body() dto: AuthDto, @Res() res: Response) {
     console.log({
       dto,
     });
-    return this.authService.signUp(dto);
+    return this.authService.signUp(res, dto);
   }
 
   //pipe for password validator
@@ -40,7 +40,7 @@ export class AuthController {
 
   //
   @Post('signin')
-  signin() {
-    return this.authService.signIn();
+  signin(@Body() dto: AuthDto) {
+    return this.authService.signIn(dto);
   }
 }
