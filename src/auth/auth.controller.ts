@@ -38,6 +38,18 @@ export class AuthController {
     });
   }
 
+  @Post('signup4')
+  signup4(@Body('email') email: string, @Body('password') password: string) {
+    console.log(email, password);
+    const obj = { email, password };
+    return obj;
+  }
+
+  @Post('signup5')
+  signup5(@Body() dto: AuthDto) {
+    return dto;
+  }
+
   //
   @Post('signin')
   signin(@Body() dto: AuthDto) {
